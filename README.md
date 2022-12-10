@@ -7,4 +7,3 @@
 ```ts
 	const cryptoParser = new CryptoParsingService("ваш токен");
 ```
-

@@ -15,9 +15,9 @@ export class CryptoViewPage {
     this._tokens = tokens;
     this._panel.onDidDispose(this.dispose, null, this._disposables);
     this._intervalId = setInterval(() => {
-        this._panel.webview.html = this.getWebviewContent(tokens);
+        this._panel.webview.html = CryptoViewPage.getWebviewContent(this._tokens);
     }, 1000);
-    this._panel.webview.html = this.getWebviewContent(tokens);
+    this._panel.webview.html = CryptoViewPage.getWebviewContent(this._tokens);
   }
 
   public static render(tokens : TokenData[]) {
@@ -50,10 +50,10 @@ export class CryptoViewPage {
     }
   }
 
-  public getWebviewContent(tokens: TokenData[]) {
+  public static getWebviewContent(tokens: TokenData[]) {
     let body = `<table style="width: 100%, padding: 4px">`;
 
-    this._tokens.map(token => {
+    tokens.map(token => {
         body += `
             <tr class="crypto-row"> 
                 <td class="crypto-row_title" align="center">${token.name}</td>

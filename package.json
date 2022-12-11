@@ -15,24 +15,25 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "cryptocurrency-view.helloWorld",
-        "title": "Hello World"
-      },
-      {
-        "command": "cryptocurrency-view.cryptoView",
-        "title": "Чекай крипто вью"
-      }
-    ],
+    "viewsContainers": {
+      "activitybar": [{
+        "id": "custom-activitybar",
+        "title": "CryptoCurrency",
+        "icon": "src/assets/tw.svg"
+      }]
+    },
     "views": {
-      "explorer": [
-        {
-          "id": "nodeDependencies",
-          "name": "Node Dependencies"
-        }
-      ]
-    }
+      "custom-activitybar": [{
+        "type": "webview",
+        "id": "cryptoview.checkview",
+        "name": "CryptoCurrency",
+        "contextualTitle": "CryptoCurrency"
+      }]
+    },
+    "commands": [{
+      "command": "cryptocurrency-view.cryptoView",
+      "title": "Чекай крипто вью"
+    }]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
